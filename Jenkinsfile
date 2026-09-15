@@ -9,7 +9,9 @@ pipeline {
                     reuseNode true
                 }
             }
+        stage('Test') {
             steps {
+                echo ' Test stage...'
                 sh '''
                     ls -la
                     node --version
