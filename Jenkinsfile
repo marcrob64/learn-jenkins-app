@@ -29,7 +29,7 @@ pipeline {
             
             steps {
                 sh '''
-                    npm test -- --watchAll=false
+                    npm test
                 '''
             }
         }
@@ -45,7 +45,7 @@ pipeline {
             steps {
                 sh '''
                     npm install -g serve
-                    npx playwright install chromium
+                    serve -s build
                     npx playwright test
                 '''
             }
