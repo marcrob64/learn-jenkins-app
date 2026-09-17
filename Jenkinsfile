@@ -2,8 +2,6 @@ pipeline {
     agent any
 
     stages {
-        /*
-        
         stage('Build') {
             agent {
                 docker {
@@ -13,16 +11,13 @@ pipeline {
             }
         steps {
                 sh '''
-                    ls -la
                     node --version
                     npm --version
                     npm ci
                     npm run build
-                    ls -la
                 ''' 
             }
         }
-        */
 
         stage('Test') {
             agent {
@@ -34,8 +29,7 @@ pipeline {
             
             steps {
                 sh '''
-                    #test -f build/index.html
-                    npm test
+                    npm test -- --watchAll=false
                 '''
             }
         }
@@ -51,7 +45,7 @@ pipeline {
             steps {
                 sh '''
                     npm install -g serve
-                    serve -s build
+                    npx playwright install chromium
                     npx playwright test
                 '''
             }
