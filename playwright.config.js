@@ -66,7 +66,7 @@ module.exports = defineConfig({
   webServer: {
     command: 'serve -s build',
     url: 'http://127.0.0.1:3000',
-    reuseExistingServer: false,
+    reuseExistingServer: true,
   },
 });
 
